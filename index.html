@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!--    <script src="js/app.js" type="module"></script>-->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<h1>Woman in Tech</h1>
+<div id="app"></div>
+<script type="text/babel">
+    const $app = document.querySelector('#app');
+    const useState = React.useState;
+
+    const Avatar = ({id, name = 'No name', size}) => {
+        const [enabled, setEnabled] = useState(true);
+
+        const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
+
+        let pictureClassName = '';
+        if (size === 'small') {
+            pictureClassName = 'is-small'
+        } else if (size === 'large') {
+            pictureClassName = 'irs-large'
+        }
+        const imgClassName = enabled ? '' : 'disabled';
+        return (
+            <picture className={pictureClassName}>
+                {
+                    id ? (
+                        <img onClick={() => setEnabled(!enabled)}
+                             className={imgClassName} src={src} alt="Avatar"/>
+                    ) : <i>No image</i>
+                }
+                <strong>{enabled ? name : 'Disabled'}</strong>
+            </picture>
+        );
+    };
+
+    function Accountant() {
+        const [accountantValue, accountantUpdater] = useState(18);
+        const [numberOfTimes, updaterTimes] = useState(0);
+
+        return (
+            <div>
+                <span>{accountantValue}</span>
+                <br/>
+                <button onClick={() => {
+                    accountantUpdater(accountantValue + 1)
+                    updaterTimes(numberOfTimes + 1)
+                } }>Incrementar +</button>
+                <button onClick={() => {
+                    accountantUpdater(accountantValue - 1)
+                    updaterTimes(numberOfTimes - 1)
+                }}>Disminuir -</button>
+                <p>Times used {numberOfTimes}</p>
+            </div>
+        )
+    }
+
+    ReactDOM.render(
+        <div>
+            <Accountant/>
+        </div>,
+    $app
+    )
+
+    /*ReactDOM.render(
+        <div>
+            <Avatar id={13} size="large" name='Ana'/>
+        </div>,
+        $app);*/
+</script>
+</body>
+</html>

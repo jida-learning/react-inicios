@@ -1,0 +1,46 @@
+html {
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+picture {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100px;
+}
+
+.is-small {
+  width: 50px;
+}
+
+.is-large {
+  width: 200px;
+}
+
+img {
+  box-shadow: 0 0 15px #999;
+  border-radius: 50%;
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 50%;
+  min-height: 50px;
+  border: 1px solid #ccc;
+}
+
+div {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Catarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=main.css.map */
